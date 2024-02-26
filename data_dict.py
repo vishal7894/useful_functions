@@ -9,7 +9,7 @@ def get_data_dictionary(data):
         else:
             range = np.nan
         nulls = data[col].isna().sum()
-        values = list(data[col].sample(25))
+        values = list(data[col].sample(frac = 0.25, replace=False, random_state=42))
         values = list(set(values))[:5]
         data_dict.loc[len(data_dict)] = [col,count,unique_values,range,nulls,values]
     return data_dict
